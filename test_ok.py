@@ -1,7 +1,7 @@
 import requests
 
-URL = "https://192.168.16.100"
-
 def test_answer():
+    URL = "http://192.168.16.100"
     r = requests.get(url = URL)
-    assert r.status_code == 200
+    sc = r.status_code
+    assert sc == 200

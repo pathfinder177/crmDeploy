@@ -4,7 +4,7 @@ default:
     - crm
 
 variables:
-    CRM_HOST: 192.168.16.100.vm.cmx.ru
+    CRM_HOST: 192.168.16.100
     CRM_IMAGE: docker.io/bitnami/suitecrm:7
     CRM_DATABASE_IMAGE: docker.io/bitnami/mariadb:10.3-debian-10
 
@@ -28,15 +28,15 @@ scanning_job:
 
 deploying_job:
   stage: deploy
-  when: manual
   environment:
     name: dev
-    url: https://$CRM_HOST
+    url: http://$CRM_HOST
   script: 
-    - docker-compose up -d
+    - sudo docker-compose up -d
 
 testing_job:
   stage: test
-  when: on_success
+  when: delayed
+  start_in: 1 minute
   script:
     - pytest test_ok.py
