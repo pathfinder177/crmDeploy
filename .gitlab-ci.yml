@@ -37,6 +37,6 @@ deploy_job:
 test_job:
   stage: test
   when: delayed
-  start_in: 1 minute
+  start_in: 2 minutes
   script:
     - pytest test_ok.py
