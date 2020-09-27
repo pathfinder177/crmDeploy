@@ -14,19 +14,19 @@ stages:
   - deploy
   - test
 
-pulling_job:
+pull_job:
   stage: pull
   script:
     - docker pull $CRM_IMAGE &&
       docker pull $CRM_DATABASE_IMAGE
 
-scanning_job:
+scan_job:
   stage: scan
   script:
     - trivy $CRM_IMAGE &&
       trivy $CRM_DATABASE_IMAGE
 
-deploying_job:
+deploy_job:
   stage: deploy
   environment:
     name: dev
@@ -34,7 +34,7 @@ deploying_job:
   script: 
     - docker-compose up -d
 
-testing_job:
+test_job:
   stage: test
   when: delayed
   start_in: 1 minute
