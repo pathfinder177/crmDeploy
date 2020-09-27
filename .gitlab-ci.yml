@@ -17,7 +17,7 @@ stages:
 pulling_job:
   stage: pull
   script:
-    - docker pull $CRM_IMAGE && \
+    - docker pull $CRM_IMAGE &&
       docker pull $CRM_DATABASE_IMAGE
 
 scanning_job:
