@@ -9,6 +9,7 @@ services:
     volumes:
       - 'mariadb_data:/bitnami'
   suitecrm:
+    user: gitlab-runner
     image: 'docker.io/bitnami/suitecrm:7-debian-10'
     environment:
       - MARIADB_HOST=mariadb
