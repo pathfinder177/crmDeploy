@@ -1,0 +1,33 @@
+---
+
+- name: BASE | Docker, trivy and epel repos are added
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: 'trivy.repo', dest: '/etc/yum.repos.d/trivy.repo' }
+    - { src: 'docker-ce.repo', dest: '/etc/yum.repos.d/docker-ce.repo' }
+    - { src: 'epel.repo', dest: '/etc/yum.repos.d/epel.repo' }
+  tags:
+    - base
+
+#Kept dev runtime environment up-to-date as possible
+- name: BASE | Latest version of the runtime packages are installed
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - docker-compose
+      - python3-pip
+      - python3
+    state: latest
+  tags:
+    - base
+
+- name: BASE | Docker service is enabled and restarted
+  service:
+    name: docker
+    state: restarted
+    enabled: yes
+  tags:
+    - base

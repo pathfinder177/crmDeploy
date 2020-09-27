@@ -1,0 +1,7 @@
+---
+  - hosts:
+    - ci_server
+    tags:
+    - crm
+    roles:
+    - role: base
