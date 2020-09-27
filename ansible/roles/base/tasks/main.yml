@@ -20,9 +20,16 @@
       - docker-compose
       - python3-pip
       - python3
+      - trivy
     state: latest
   tags:
     - base
+
+- name: BASE | Pytest is installed
+  pip:
+    name: 
+      - pytest
+      - requests
 
 - name: BASE | Docker service is enabled and restarted
   service:
