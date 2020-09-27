@@ -32,7 +32,7 @@ deploying_job:
     name: dev
     url: http://$CRM_HOST
   script: 
-    - echo "pass1234" | sudo docker-compose up -d
+    - sudo docker-compose up -d
 
 testing_job:
   stage: test
