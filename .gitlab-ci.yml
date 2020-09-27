@@ -23,7 +23,7 @@ pulling_job:
 scanning_job:
   stage: scan
   script:
-    - trivy $CRM_IMAGE && \
+    - trivy $CRM_IMAGE &&
       trivy $CRM_DATABASE_IMAGE
 
 deploying_job:
